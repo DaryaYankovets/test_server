@@ -1,31 +1,32 @@
-const formPost = document.querySelector('#form_post');
-//const formPost = document.querySelector('#form_post');
-
-postData(formPost);
-
 /* start: post data to db.json */
-function postData(form) {
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+const formPost = document.querySelector('#form_post');
 
-        const formData = new FormData(form);
+const postData = async (url, data) => {
+    let res = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    });
 
-        const obj = {};
-        formData.forEach((value, key) => obj[key] = value);
-        
-        fetch('http://localhost:3000/requests', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(obj),
-        })
+    return await res.json();
+};
+
+
+formPost.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(formPost);
+
+    const json = JSON.stringify(Object.fromEntries(formData.entries()));
+
+    postData('http://localhost:3000/requests', json)
         .then((data) => data.text())
         .then(data => console.log('post data', data))
         .catch(() => console.log('Что-то пошло не так...'))
         .finally(() => form.reset());
-    });
-}
+});
 /* end: post data to db.json */
 
 
