@@ -6,22 +6,36 @@ function postData(form) {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        const request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-
-        //request.setRequestHeader('Content-type', 'multipart/form-data');
-
         const formData = new FormData(form);
 
-        request.send(formData);
+        const obj = {};
+        formData.forEach((value, key) => obj[key] = value);
+        
+        fetch('http://localhost:3000/requests', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(obj),
+        })
+        .then((data) => data.text())
+        .then(data => console.log(data))
+        .catch(() => console.log('Что-то пошло не так...'))
+        .finally(() => form.reset());
 
-        request.addEventListener('load', () => {
-            if (request.status === 200) {
-                console.log(request.response);
-            } else {
-                console.log('Что-то пошло не так...');
-            }
-        });
     });
 }
+
+
+
+
+
+fetch('http://localhost:3000/products')
+    .then(data => data.json())
+    .then(data => console.log(data));
+
+
+fetch('http://localhost:3000/requests')
+    .then(data => data.json())
+    .then(data => console.log(data));
 

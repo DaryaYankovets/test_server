@@ -1,0 +1,48 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Dasha"
+    },
+    {
+      "id": "2",
+      "name": "Pasha"
+    },
+    {
+      "id": "3",
+      "name": "Yana"
+    }
+  ],
+  "requests": [
+    {
+      "name": "xsac",
+      "email": "csac",
+      "id": 1
+    },
+    {
+      "name": "ewdsc",
+      "email": "vwd cw",
+      "id": 2
+    },
+    {
+      "name": "f",
+      "email": "ff",
+      "id": 3
+    },
+    {
+      "name": "333",
+      "email": "555",
+      "id": 4
+    },
+    {
+      "name": "werty",
+      "email": "33333",
+      "id": 5
+    },
+    {
+      "name": "34",
+      "email": "667",
+      "id": 6
+    }
+  ]
+}
