@@ -1,7 +1,9 @@
-const form = document.querySelector('form');
+const formPost = document.querySelector('#form_post');
+//const formPost = document.querySelector('#form_post');
 
-postData(form);
+postData(formPost);
 
+/* start: post data to db.json */
 function postData(form) {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -19,12 +21,29 @@ function postData(form) {
             body: JSON.stringify(obj),
         })
         .then((data) => data.text())
-        .then(data => console.log(data))
+        .then(data => console.log('post data', data))
         .catch(() => console.log('Что-то пошло не так...'))
         .finally(() => form.reset());
-
     });
 }
+/* end: post data to db.json */
+
+
+
+/* start: get data from db.json */
+async function getData(url) {
+    let res = await fetch(url);
+
+    if (!res.ok) {
+        throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+    }
+
+    return await res.json();
+}
+
+getData('http://localhost:3000/products')
+    .then(data => console.log('getData', data));
+/* end: get data from db.json */
 
 
 
