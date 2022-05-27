@@ -25,7 +25,7 @@ formPost.addEventListener('submit', (event) => {
         .then((data) => data.text())
         .then(data => console.log('post data', data))
         .catch(() => console.log('Что-то пошло не так...'))
-        .finally(() => form.reset());
+        .finally(() => formPost.reset());
 });
 /* end: post data to db.json */
 
