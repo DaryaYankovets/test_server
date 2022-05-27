@@ -22,7 +22,6 @@ formPost.addEventListener('submit', (event) => {
     const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
     postData('http://localhost:3000/requests', json)
-        .then((data) => data.text())
         .then(data => console.log('post data', data))
         .catch(() => console.log('Что-то пошло не так...'))
         .finally(() => formPost.reset());
