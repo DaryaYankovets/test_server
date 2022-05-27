@@ -50,9 +50,9 @@ getData('http://localhost:3000/products')
 
 
 
-fetch('http://localhost:3000/products')
-    .then(data => data.json())
-    .then(data => console.log(data));
+// fetch('http://localhost:3000/products')
+//     .then(data => data.json())
+//     .then(data => console.log(data));
 
 
 fetch('http://localhost:3000/requests')
